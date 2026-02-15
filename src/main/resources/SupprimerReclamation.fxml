@@ -5,7 +5,7 @@
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="tn.esprit.controllers.SupprimerReclamationController"
-            style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #d9e4f5);">
+            style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #36656B);">
 
     <center>
         <VBox spacing="25" alignment="CENTER"
@@ -14,7 +14,7 @@
             <Label text="Supprimer une Réclamation"
                    style="-fx-font-size:24px;
                           -fx-font-weight:bold;
-                          -fx-text-fill:#2c3e50;" />
+                          -fx-text-fill:#36656B;" />
 
             <TextField fx:id="idField"
                        promptText="Entrer l'ID de la réclamation"

@@ -8,62 +8,42 @@ import tn.esprit.services.ServiceReclamation;
 public class AjouterReclamationController {
 
     @FXML
-    private TextField typeField, sujetField, idUserField;
+    private TextField tfType;
     @FXML
-    private TextArea descriptionField;
+    private TextField tfSujet;
     @FXML
-    private ComboBox<String> statutCombo;
+    private TextArea taDescription;
     @FXML
-    private Button ajouterBtn;
+    private Button btnAjouter;
     @FXML
-    private Label messageLabel;
+    private Label lblMessage;
 
     private ServiceReclamation service = new ServiceReclamation();
 
     @FXML
-    public void initialize() {
-        // Ajouter l'action du bouton
-        ajouterBtn.setOnAction(e -> ajouterReclamation());
-    }
-
     private void ajouterReclamation() {
-        String type = typeField.getText().trim();
-        String sujet = sujetField.getText().trim();
-        String description = descriptionField.getText().trim();
-        String statut = statutCombo.getValue();
-        String idUserStr = idUserField.getText().trim();
+        String type = tfType.getText().trim();
+        String sujet = tfSujet.getText().trim();
+        String description = taDescription.getText().trim();
 
         // Contrôle de saisie simple
-        if(type.isEmpty() || sujet.isEmpty() || description.isEmpty() || statut == null || idUserStr.isEmpty()) {
-            messageLabel.setText("Tous les champs sont obligatoires !");
+        if(type.isEmpty() || sujet.isEmpty() || description.isEmpty()) {
+            lblMessage.setText("Tous les champs sont obligatoires !");
             return;
         }
 
-        int idUser;
         try {
-            idUser = Integer.parseInt(idUserStr);
-        } catch (NumberFormatException ex) {
-            messageLabel.setText("ID Utilisateur doit être un nombre !");
-            return;
-        }
-
-        // Création et ajout de la réclamation
-        Reclamation r = new Reclamation(0, type, sujet, description, statut, idUser);
-        try {
+            Reclamation r = new Reclamation(0, type, sujet, description, "En attente", 1); // idUser = 1 pour test
             service.ajouter(r);
-            messageLabel.setStyle("-fx-text-fill: green;");
-            messageLabel.setText("Réclamation ajoutée avec succès !");
-            clearFields();
-        } catch (Exception ex) {
-            messageLabel.setText("Erreur : " + ex.getMessage());
-        }
-    }
+            lblMessage.setText("Réclamation ajoutée avec succès !");
 
-    private void clearFields() {
-        typeField.clear();
-        sujetField.clear();
-        descriptionField.clear();
-        statutCombo.getSelectionModel().clearSelection();
-        idUserField.clear();
+            // Reset des champs
+            tfType.clear();
+            tfSujet.clear();
+            taDescription.clear();
+        } catch (Exception e) {
+            lblMessage.setText("Erreur : " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

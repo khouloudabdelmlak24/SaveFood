@@ -5,7 +5,7 @@
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="tn.esprit.controllers.AjouterReponseReclamationController"
-            style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #d9e4f5);">
+            style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #36656B);">
 
     <center>
         <VBox spacing="20" alignment="CENTER"
@@ -14,7 +14,7 @@
             <Label text="Ajouter Réponse"
                    style="-fx-font-size:22px;
                           -fx-font-weight:bold;
-                          -fx-text-fill:#2c3e50;" />
+                          -fx-text-fill:#36656B;" />
 
             <TextArea fx:id="messageField"
                       promptText="Message"
@@ -33,7 +33,7 @@
 
             <Button text="Ajouter"
                     onAction="#ajouter"
-                    style="-fx-background-color:#2ecc71;
+                    style="-fx-background-color:#36656B;
                            -fx-text-fill:white;
                            -fx-background-radius:20;
                            -fx-padding:10 25 10 25;" />

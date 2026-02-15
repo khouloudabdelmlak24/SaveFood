@@ -27,8 +27,9 @@ public class ReponseReclamation {
     }
 
     public java.sql.Date getDateReponse() {
-        return (java.sql.Date) dateReponse;
+        return new java.sql.Date(dateReponse.getTime());
     }
+
 
     public int getIdReclamation() {
         return idReclamation;

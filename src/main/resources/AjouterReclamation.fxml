@@ -2,79 +2,72 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="tn.esprit.controllers.AjouterReclamationController"
-            style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #d9e4f5);">
+            style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #36656B);">
 
-    <!-- ================= HEADER ================= -->
     <top>
         <VBox spacing="15" style="-fx-padding:25;">
             <Label text="Ajouter une Réclamation"
                    style="-fx-font-size:24px;
                           -fx-font-weight:bold;
-                          -fx-text-fill:#2c3e50;" />
+                          -fx-text-fill:#36656B;" />
         </VBox>
     </top>
 
-    <!-- ================= CONTENU ================= -->
     <center>
-        <VBox spacing="20" alignment="CENTER"
-              style="-fx-padding:40;">
+        <VBox alignment="CENTER" spacing="20" style="-fx-padding:40;">
 
             <TextField fx:id="typeField"
-                       promptText="Type"
                        prefWidth="350"
+                       promptText="Type"
                        style="-fx-background-radius:20;
                               -fx-padding:10 15 10 15;
                               -fx-border-radius:20;
                               -fx-border-color:#3498db;" />
 
             <TextField fx:id="sujetField"
-                       promptText="Sujet"
                        prefWidth="350"
+                       promptText="Sujet"
                        style="-fx-background-radius:20;
                               -fx-padding:10 15 10 15;
                               -fx-border-radius:20;
                               -fx-border-color:#3498db;" />
 
-            <TextArea fx:id="descriptionArea"
-                      promptText="Description"
-                      prefWidth="350"
+            <TextArea fx:id="descriptionField"
                       prefHeight="120"
+                      prefWidth="350"
+                      promptText="Description"
                       style="-fx-background-radius:20;
                              -fx-border-radius:20;
                              -fx-border-color:#3498db;" />
 
-            <TextField fx:id="statutField"
-                       promptText="Statut"
+            <ComboBox fx:id="statutCombo"
+                      prefWidth="350"
+                      promptText="Choisir un statut"
+                      style="-fx-background-radius:20;
+                             -fx-border-radius:20;
+                             -fx-border-color:#3498db;" />
+
+            <TextField fx:id="idUserField"
                        prefWidth="350"
+                       promptText="ID Utilisateur"
                        style="-fx-background-radius:20;
                               -fx-padding:10 15 10 15;
                               -fx-border-radius:20;
                               -fx-border-color:#3498db;" />
 
-            <!-- Boutons -->
-            <HBox spacing="20" alignment="CENTER">
+            <Label fx:id="messageLabel"
+                   style="-fx-font-weight:bold;" />
 
-                <Button text="Ajouter"
-                        onAction="#ajouterReclamation"
-                        style="-fx-background-color:#2ecc71;
-                               -fx-text-fill:white;
-                               -fx-background-radius:20;
-                               -fx-padding:10 25 10 25;
-                               -fx-cursor:hand;" />
-
-                <Button text="Annuler"
-                        onAction="#annuler"
-                        style="-fx-background-color:#e74c3c;
-                               -fx-text-fill:white;
-                               -fx-background-radius:20;
-                               -fx-padding:10 25 10 25;
-                               -fx-cursor:hand;" />
-
-            </HBox>
+            <Button text="Ajouter"
+                    onAction="#ajouterReclamation"
+                    style="-fx-background-color:#36656B;
+                           -fx-text-fill:white;
+                           -fx-background-radius:20;
+                           -fx-padding:10 25 10 25;
+                           -fx-cursor:hand;" />
 
         </VBox>
     </center>

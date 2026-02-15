@@ -11,13 +11,13 @@ public class MainFx extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterReclamation.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/RechercherTrierReponseReclamation.fxml"));
 
         Parent root = loader.load();
 
         Scene scene = new Scene(root );
 
-        stage.setTitle("Ajouter Réclamation");
+        stage.setTitle("Modifier réclamation ");
         stage.setScene(scene);
         stage.show();
     }

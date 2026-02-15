@@ -1,5 +1,6 @@
 package tn.esprit.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import tn.esprit.entities.Reclamation;
@@ -20,11 +21,15 @@ public class ModifierReclamationController {
 
     @FXML
     public void initialize() {
+        // initialisation si besoin
         loadBtn.setOnAction(e -> loadReclamation());
-        modifierBtn.setOnAction(e -> modifierReclamation());
     }
 
-    private void loadReclamation() {
+    // ==============================
+    // CHARGER UNE RÉCLAMATION
+    // ==============================
+    @FXML
+    public void loadReclamation() {
         String sujet = searchSujetField.getText().trim();
         if(sujet.isEmpty()) {
             messageLabel.setText("Entrez un sujet pour charger !");
@@ -47,11 +52,16 @@ public class ModifierReclamationController {
         }
     }
 
-    private void modifierReclamation() {
+    // ==============================
+    // MODIFIER UNE RÉCLAMATION
+    // ==============================
+    @FXML
+    public void modifierReclamation(ActionEvent event) {
         if(current == null) {
             messageLabel.setText("Chargez d'abord une réclamation !");
             return;
         }
+
         String type = typeField.getText().trim();
         String sujet = sujetField.getText().trim();
         String desc = descriptionField.getText().trim();
@@ -71,6 +81,33 @@ public class ModifierReclamationController {
             service.modifier(current);
             messageLabel.setStyle("-fx-text-fill: green;");
             messageLabel.setText("Réclamation modifiée avec succès !");
+        } catch (Exception ex) {
+            messageLabel.setText("Erreur : " + ex.getMessage());
+        }
+    }
+
+    // ==============================
+    // SUPPRIMER UNE RÉCLAMATION
+    // ==============================
+    @FXML
+    public void supprimerReclamation(ActionEvent event) {
+        if(current == null) {
+            messageLabel.setText("Chargez d'abord une réclamation !");
+            return;
+        }
+
+        try {
+            service.supprimer(current.getId());
+            messageLabel.setStyle("-fx-text-fill: red;");
+            messageLabel.setText("Réclamation supprimée avec succès !");
+
+            // vider les champs
+            typeField.clear();
+            sujetField.clear();
+            descriptionField.clear();
+            statutCombo.setValue(null);
+            current = null;
+
         } catch (Exception ex) {
             messageLabel.setText("Erreur : " + ex.getMessage());
         }

@@ -3,22 +3,36 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="tn.esprit.controllers.ModifierReclamationController"
-            style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #d9e4f5);">
+            style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #36656B);">
 
     <top>
         <VBox spacing="15" style="-fx-padding:25;">
             <Label text="Modifier Réclamation"
                    style="-fx-font-size:24px;
                           -fx-font-weight:bold;
-                          -fx-text-fill:#2c3e50;" />
+                          -fx-text-fill:#36656B;" />
         </VBox>
     </top>
 
     <center>
         <VBox spacing="20" alignment="CENTER"
               style="-fx-padding:40;">
+
+            <TextField fx:id="searchSujetField" promptText="Rechercher par sujet"
+                       prefWidth="350"
+                       style="-fx-background-radius:20;
+                              -fx-border-radius:20;
+                              -fx-border-color:#3498db;" />
+
+            <Button fx:id="loadBtn" text="Charger"
+                    style="-fx-background-color:#36656B;
+                           -fx-text-fill:white;
+                           -fx-background-radius:20;
+                           -fx-padding:10 25 10 25;" />
 
             <TextField fx:id="typeField" promptText="Type"
                        prefWidth="350"
@@ -32,7 +46,7 @@
                               -fx-border-radius:20;
                               -fx-border-color:#3498db;" />
 
-            <TextArea fx:id="descriptionArea"
+            <TextArea fx:id="descriptionField"
                       promptText="Description"
                       prefWidth="350"
                       prefHeight="120"
@@ -40,18 +54,22 @@
                              -fx-border-radius:20;
                              -fx-border-color:#3498db;" />
 
-            <TextField fx:id="statutField"
-                       promptText="Statut"
-                       prefWidth="350"
-                       style="-fx-background-radius:20;
-                              -fx-border-radius:20;
-                              -fx-border-color:#3498db;" />
+            <ComboBox fx:id="statutCombo" prefWidth="350" promptText="Statut">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="En attente"/>
+                        <String fx:value="En cours"/>
+                        <String fx:value="Traitée"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
 
             <HBox spacing="20" alignment="CENTER">
 
-                <Button text="Modifier"
+                <Button fx:id="modifierBtn"
+                        text="Modifier"
                         onAction="#modifierReclamation"
-                        style="-fx-background-color:#3498db;
+                        style="-fx-background-color:#36656B;
                                -fx-text-fill:white;
                                -fx-background-radius:20;
                                -fx-padding:10 25 10 25;" />
@@ -64,6 +82,8 @@
                                -fx-padding:10 25 10 25;" />
 
             </HBox>
+
+            <Label fx:id="messageLabel" textFill="red"/>
 
         </VBox>
     </center>

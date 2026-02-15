@@ -5,16 +5,16 @@
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="tn.esprit.controllers.AfficherReclamationController"
-            style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #d9e4f5);">
+            style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #36656B);">
 
     <!-- ================= HEADER ================= -->
     <top>
         <VBox spacing="15" style="-fx-padding:25;">
 
-            <Label text="Gestion des Réclamations"
+            <Label text="Gérer les Réclamations"
                    style="-fx-font-size:24px;
                           -fx-font-weight:bold;
-                          -fx-text-fill:#2c3e50;" />
+                          -fx-text-fill:#36656B;" />
 
             <HBox spacing="15" alignment="CENTER_LEFT">
 

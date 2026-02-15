@@ -8,17 +8,17 @@
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="tn.esprit.controllers.AfficherReponseController"
-            style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #d9e4f5);">
+            style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #36656B);">
 
     <!-- ===================== HEADER ===================== -->
     <top>
         <VBox spacing="15" style="-fx-padding:25;">
 
             <!-- Titre -->
-            <Label text="Gestion des Réponses"
+            <Label text="Gérer les  Réponses"
                    style="-fx-font-size:24px;
                           -fx-font-weight:bold;
-                          -fx-text-fill:#2c3e50;" />
+                          -fx-text-fill:#36656B;" />
 
             <!-- Barre de recherche -->
             <HBox spacing="15" alignment="CENTER_LEFT">
