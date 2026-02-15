@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.controllers.ModifierReponseReclamationController"
+            style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #d9e4f5);">
+
+    <center>
+        <VBox spacing="20" alignment="CENTER"
+              style="-fx-padding:40;">
+
+            <Label text="Modifier Réponse"
+                   style="-fx-font-size:22px;
+                          -fx-font-weight:bold;
+                          -fx-text-fill:#2c3e50;" />
+
+            <TextField fx:id="idField"
+                       promptText="ID Réponse"
+                       prefWidth="350"
+                       style="-fx-background-radius:20;
+                              -fx-border-radius:20;
+                              -fx-border-color:#3498db;" />
+
+            <TextArea fx:id="messageField"
+                      promptText="Nouveau message"
+                      prefWidth="350"
+                      prefHeight="120"
+                      style="-fx-background-radius:20;
+                             -fx-border-radius:20;
+                             -fx-border-color:#3498db;" />
+
+            <TextField fx:id="idReclamationField"
+                       promptText="ID Réclamation"
+                       prefWidth="350"
+                       style="-fx-background-radius:20;
+                              -fx-border-radius:20;
+                              -fx-border-color:#3498db;" />
+
+            <Button text="Modifier"
+                    onAction="#modifier"
+                    style="-fx-background-color:#3498db;
+                           -fx-text-fill:white;
+                           -fx-background-radius:20;
+                           -fx-padding:10 25 10 25;" />
+
+        </VBox>
+    </center>
+
+</BorderPane>

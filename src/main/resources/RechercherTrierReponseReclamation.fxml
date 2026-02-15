@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.controllers.RechercherTrierReponseReclamationController"
+            style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #d9e4f5);">
+
+    <!-- ================= HEADER ================= -->
+    <top>
+        <VBox spacing="15" style="-fx-padding:25;">
+
+            <Label text="Rechercher &amp; Trier Réponses"
+                   style="-fx-font-size:24px;
+                          -fx-font-weight:bold;
+                          -fx-text-fill:#2c3e50;" />
+
+            <HBox spacing="15" alignment="CENTER_LEFT">
+
+                <TextField fx:id="searchField"
+                           promptText="🔍 Rechercher par message..."
+                           prefWidth="280"
+                           style="-fx-background-radius:20;
+                                  -fx-padding:8 15 8 15;
+                                  -fx-border-radius:20;
+                                  -fx-border-color:#3498db;" />
+
+                <Button text="Rechercher"
+                        onAction="#rechercher"
+                        style="-fx-background-color:#3498db;
+                               -fx-text-fill:white;
+                               -fx-background-radius:20;
+                               -fx-padding:8 20 8 20;" />
+
+                <Button text="📅 Trier par Date"
+                        onAction="#trierDate"
+                        style="-fx-background-color:#2ecc71;
+                               -fx-text-fill:white;
+                               -fx-background-radius:20;
+                               -fx-padding:8 20 8 20;" />
+
+                <Button text="Afficher Tout"
+                        onAction="#afficherTout"
+                        style="-fx-background-color:#9b59b6;
+                               -fx-text-fill:white;
+                               -fx-background-radius:20;
+                               -fx-padding:8 20 8 20;" />
+
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- ================= CONTENT ================= -->
+    <center>
+        <ScrollPane fitToWidth="true"
+                    style="-fx-background-color:transparent;">
+            <VBox fx:id="cardContainer"
+                  spacing="20"
+                  style="-fx-padding:25;" />
+        </ScrollPane>
+    </center>
+
+</BorderPane>

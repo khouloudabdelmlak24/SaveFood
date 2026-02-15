@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.controllers.AjouterReclamationController"
+            style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #d9e4f5);">
+
+    <!-- ================= HEADER ================= -->
+    <top>
+        <VBox spacing="15" style="-fx-padding:25;">
+            <Label text="Ajouter une Réclamation"
+                   style="-fx-font-size:24px;
+                          -fx-font-weight:bold;
+                          -fx-text-fill:#2c3e50;" />
+        </VBox>
+    </top>
+
+    <!-- ================= CONTENU ================= -->
+    <center>
+        <VBox spacing="20" alignment="CENTER"
+              style="-fx-padding:40;">
+
+            <TextField fx:id="typeField"
+                       promptText="Type"
+                       prefWidth="350"
+                       style="-fx-background-radius:20;
+                              -fx-padding:10 15 10 15;
+                              -fx-border-radius:20;
+                              -fx-border-color:#3498db;" />
+
+            <TextField fx:id="sujetField"
+                       promptText="Sujet"
+                       prefWidth="350"
+                       style="-fx-background-radius:20;
+                              -fx-padding:10 15 10 15;
+                              -fx-border-radius:20;
+                              -fx-border-color:#3498db;" />
+
+            <TextArea fx:id="descriptionArea"
+                      promptText="Description"
+                      prefWidth="350"
+                      prefHeight="120"
+                      style="-fx-background-radius:20;
+                             -fx-border-radius:20;
+                             -fx-border-color:#3498db;" />
+
+            <TextField fx:id="statutField"
+                       promptText="Statut"
+                       prefWidth="350"
+                       style="-fx-background-radius:20;
+                              -fx-padding:10 15 10 15;
+                              -fx-border-radius:20;
+                              -fx-border-color:#3498db;" />
+
+            <!-- Boutons -->
+            <HBox spacing="20" alignment="CENTER">
+
+                <Button text="Ajouter"
+                        onAction="#ajouterReclamation"
+                        style="-fx-background-color:#2ecc71;
+                               -fx-text-fill:white;
+                               -fx-background-radius:20;
+                               -fx-padding:10 25 10 25;
+                               -fx-cursor:hand;" />
+
+                <Button text="Annuler"
+                        onAction="#annuler"
+                        style="-fx-background-color:#e74c3c;
+                               -fx-text-fill:white;
+                               -fx-background-radius:20;
+                               -fx-padding:10 25 10 25;
+                               -fx-cursor:hand;" />
+
+            </HBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

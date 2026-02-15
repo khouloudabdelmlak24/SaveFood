@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.controllers.SupprimerReponseReclamationController"
+            style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #d9e4f5);">
+
+    <center>
+        <VBox spacing="20" alignment="CENTER"
+              style="-fx-padding:50;">
+
+            <Label text="Supprimer Réponse"
+                   style="-fx-font-size:22px;
+                          -fx-font-weight:bold;
+                          -fx-text-fill:#2c3e50;" />
+
+            <TextField fx:id="idField"
+                       promptText="ID Réponse"
+                       prefWidth="300"
+                       style="-fx-background-radius:20;
+                              -fx-border-radius:20;
+                              -fx-border-color:#3498db;" />
+
+            <Button text="Supprimer"
+                    onAction="#supprimer"
+                    style="-fx-background-color:#e74c3c;
+                           -fx-text-fill:white;
+                           -fx-background-radius:20;
+                           -fx-padding:10 25 10 25;" />
+
+        </VBox>
+    </center>
+
+</BorderPane>
