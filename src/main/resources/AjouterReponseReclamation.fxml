@@ -7,36 +7,46 @@
             fx:controller="tn.esprit.controllers.AjouterReponseReclamationController"
             style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #36656B);">
 
-    <center>
-        <VBox spacing="20" alignment="CENTER"
-              style="-fx-padding:40;">
-
-            <Label text="Ajouter Réponse"
-                   style="-fx-font-size:22px;
+    <top>
+        <VBox spacing="15" style="-fx-padding:25;">
+            <Label text="Ajouter une Réponse à une Réclamation"
+                   style="-fx-font-size:24px;
                           -fx-font-weight:bold;
                           -fx-text-fill:#36656B;" />
+        </VBox>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" spacing="20" style="-fx-padding:40;">
 
             <TextArea fx:id="messageField"
-                      promptText="Message"
-                      prefWidth="350"
                       prefHeight="120"
+                      prefWidth="350"
+                      promptText="Message"
                       style="-fx-background-radius:20;
                              -fx-border-radius:20;
                              -fx-border-color:#3498db;" />
 
             <TextField fx:id="idReclamationField"
-                       promptText="ID Réclamation"
                        prefWidth="350"
+                       promptText="ID Réclamation"
                        style="-fx-background-radius:20;
+                              -fx-padding:10 15 10 15;
                               -fx-border-radius:20;
                               -fx-border-color:#3498db;" />
 
-            <Button text="Ajouter"
+            <Label fx:id="messageLabel"
+                   style="-fx-font-weight:bold;
+                          -fx-text-fill:#A5C89E;" />
+
+            <Button fx:id="btnAjouter"
+                    text="Ajouter"
                     onAction="#ajouter"
                     style="-fx-background-color:#36656B;
                            -fx-text-fill:white;
                            -fx-background-radius:20;
-                           -fx-padding:10 25 10 25;" />
+                           -fx-padding:10 25 10 25;
+                           -fx-cursor:hand;" />
 
         </VBox>
     </center>

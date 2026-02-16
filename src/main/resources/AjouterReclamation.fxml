@@ -43,25 +43,12 @@
                              -fx-border-radius:20;
                              -fx-border-color:#3498db;" />
 
-            <ComboBox fx:id="statutCombo"
-                      prefWidth="350"
-                      promptText="Choisir un statut"
-                      style="-fx-background-radius:20;
-                             -fx-border-radius:20;
-                             -fx-border-color:#3498db;" />
-
-            <TextField fx:id="idUserField"
-                       prefWidth="350"
-                       promptText="ID Utilisateur"
-                       style="-fx-background-radius:20;
-                              -fx-padding:10 15 10 15;
-                              -fx-border-radius:20;
-                              -fx-border-color:#3498db;" />
-
             <Label fx:id="messageLabel"
-                   style="-fx-font-weight:bold;" />
+                   style="-fx-font-weight:bold;
+                          -fx-text-fill:#A5C89E;" />
 
-            <Button text="Ajouter"
+            <Button fx:id="btnAjouter"
+                    text="Ajouter"
                     onAction="#ajouterReclamation"
                     style="-fx-background-color:#36656B;
                            -fx-text-fill:white;

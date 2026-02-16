@@ -3,15 +3,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="tn.esprit.controllers.ModifierReclamationController"
             style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #36656B);">
 
     <top>
         <VBox spacing="15" style="-fx-padding:25;">
-            <Label text="Modifier Réclamation"
+            <Label text="Modifier une Réclamation"
                    style="-fx-font-size:24px;
                           -fx-font-weight:bold;
                           -fx-text-fill:#36656B;" />
@@ -19,71 +17,78 @@
     </top>
 
     <center>
-        <VBox spacing="20" alignment="CENTER"
-              style="-fx-padding:40;">
+        <VBox alignment="CENTER" spacing="15" style="-fx-padding:30;">
 
-            <TextField fx:id="searchSujetField" promptText="Rechercher par sujet"
+            <TextField fx:id="searchSujetField"
                        prefWidth="350"
+                       promptText="Sujet à rechercher"
                        style="-fx-background-radius:20;
+                              -fx-padding:10 15 10 15;
                               -fx-border-radius:20;
                               -fx-border-color:#3498db;" />
 
-            <Button fx:id="loadBtn" text="Charger"
+            <Button fx:id="loadBtn"
+                    text="Charger"
                     style="-fx-background-color:#36656B;
                            -fx-text-fill:white;
                            -fx-background-radius:20;
-                           -fx-padding:10 25 10 25;" />
+                           -fx-padding:10 25 10 25;
+                           -fx-cursor:hand;" />
 
-            <TextField fx:id="typeField" promptText="Type"
+            <TextField fx:id="typeField"
                        prefWidth="350"
+                       promptText="Type"
                        style="-fx-background-radius:20;
+                              -fx-padding:10 15 10 15;
                               -fx-border-radius:20;
                               -fx-border-color:#3498db;" />
 
-            <TextField fx:id="sujetField" promptText="Sujet"
+            <TextField fx:id="sujetField"
                        prefWidth="350"
+                       promptText="Sujet"
                        style="-fx-background-radius:20;
+                              -fx-padding:10 15 10 15;
                               -fx-border-radius:20;
                               -fx-border-color:#3498db;" />
 
             <TextArea fx:id="descriptionField"
-                      promptText="Description"
-                      prefWidth="350"
                       prefHeight="120"
+                      prefWidth="350"
+                      promptText="Description"
                       style="-fx-background-radius:20;
                              -fx-border-radius:20;
                              -fx-border-color:#3498db;" />
 
-            <ComboBox fx:id="statutCombo" prefWidth="350" promptText="Statut">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="En attente"/>
-                        <String fx:value="En cours"/>
-                        <String fx:value="Traitée"/>
-                    </FXCollections>
-                </items>
-            </ComboBox>
+            <ComboBox fx:id="statutCombo"
+                      prefWidth="350"
+                      promptText="Statut"
+                      style="-fx-background-radius:20;
+                             -fx-border-radius:20;
+                             -fx-border-color:#3498db;" />
+
+            <Label fx:id="messageLabel"
+                   style="-fx-font-weight:bold;
+                          -fx-text-fill:#A5C89E;" />
 
             <HBox spacing="20" alignment="CENTER">
-
                 <Button fx:id="modifierBtn"
                         text="Modifier"
                         onAction="#modifierReclamation"
                         style="-fx-background-color:#36656B;
                                -fx-text-fill:white;
                                -fx-background-radius:20;
-                               -fx-padding:10 25 10 25;" />
+                               -fx-padding:10 25 10 25;
+                               -fx-cursor:hand;" />
 
-                <Button text="Supprimer"
+                <Button fx:id="supprimerBtn"
+                        text="Supprimer"
                         onAction="#supprimerReclamation"
-                        style="-fx-background-color:#e74c3c;
+                        style="-fx-background-color:#E74C3C;
                                -fx-text-fill:white;
                                -fx-background-radius:20;
-                               -fx-padding:10 25 10 25;" />
-
+                               -fx-padding:10 25 10 25;
+                               -fx-cursor:hand;" />
             </HBox>
-
-            <Label fx:id="messageLabel" textFill="red"/>
 
         </VBox>
     </center>

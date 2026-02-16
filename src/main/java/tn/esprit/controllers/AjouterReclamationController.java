@@ -8,41 +8,66 @@ import tn.esprit.services.ServiceReclamation;
 public class AjouterReclamationController {
 
     @FXML
-    private TextField tfType;
+    private TextField typeField;
     @FXML
-    private TextField tfSujet;
+    private TextField sujetField;
     @FXML
-    private TextArea taDescription;
+    private TextArea descriptionField;
+    @FXML
+    private Label messageLabel;
     @FXML
     private Button btnAjouter;
-    @FXML
-    private Label lblMessage;
 
     private ServiceReclamation service = new ServiceReclamation();
 
     @FXML
     private void ajouterReclamation() {
-        String type = tfType.getText().trim();
-        String sujet = tfSujet.getText().trim();
-        String description = taDescription.getText().trim();
+        String type = typeField.getText().trim();
+        String sujet = sujetField.getText().trim();
+        String description = descriptionField.getText().trim();
 
         // Contrôle de saisie simple
-        if(type.isEmpty() || sujet.isEmpty() || description.isEmpty()) {
-            lblMessage.setText("Tous les champs sont obligatoires !");
+        if (type.isEmpty()) {
+            messageLabel.setText("Le champ Type est obligatoire !");
+            typeField.requestFocus();
+            return;
+        }
+
+        if (sujet.isEmpty()) {
+            messageLabel.setText("Le champ Sujet est obligatoire !");
+            sujetField.requestFocus();
+            return;
+        }
+
+        if (description.isEmpty()) {
+            messageLabel.setText("Le champ Description est obligatoire !");
+            descriptionField.requestFocus();
+            return;
+        }
+
+        if (sujet.length() < 5) {
+            messageLabel.setText("Le Sujet doit contenir au moins 5 caractères !");
+            sujetField.requestFocus();
+            return;
+        }
+
+        if (description.length() < 10) {
+            messageLabel.setText("La Description doit contenir au moins 10 caractères !");
+            descriptionField.requestFocus();
             return;
         }
 
         try {
             Reclamation r = new Reclamation(0, type, sujet, description, "En attente", 1); // idUser = 1 pour test
             service.ajouter(r);
-            lblMessage.setText("Réclamation ajoutée avec succès !");
+            messageLabel.setText("Réclamation ajoutée avec succès !");
 
             // Reset des champs
-            tfType.clear();
-            tfSujet.clear();
-            taDescription.clear();
+            typeField.clear();
+            sujetField.clear();
+            descriptionField.clear();
         } catch (Exception e) {
-            lblMessage.setText("Erreur : " + e.getMessage());
+            messageLabel.setText("Erreur : " + e.getMessage());
             e.printStackTrace();
         }
     }

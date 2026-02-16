@@ -13,7 +13,7 @@ public class ModifierReclamationController {
     @FXML private TextField searchSujetField, typeField, sujetField;
     @FXML private TextArea descriptionField;
     @FXML private ComboBox<String> statutCombo;
-    @FXML private Button loadBtn, modifierBtn;
+    @FXML private Button loadBtn, modifierBtn, supprimerBtn;
     @FXML private Label messageLabel;
 
     private ServiceReclamation service = new ServiceReclamation();
@@ -21,7 +21,10 @@ public class ModifierReclamationController {
 
     @FXML
     public void initialize() {
-        // initialisation si besoin
+        // Initialiser le combo avec des statuts possibles
+        statutCombo.getItems().addAll("En attente", "En cours", "Résolu");
+
+        // Actions boutons
         loadBtn.setOnAction(e -> loadReclamation());
     }
 
@@ -30,13 +33,13 @@ public class ModifierReclamationController {
     // ==============================
     @FXML
     public void loadReclamation() {
-        String sujet = searchSujetField.getText().trim();
-        if(sujet.isEmpty()) {
+        String sujetSearch = searchSujetField.getText().trim();
+        if(sujetSearch.isEmpty()) {
             messageLabel.setText("Entrez un sujet pour charger !");
             return;
         }
         try {
-            List<Reclamation> list = service.rechercherParSujet(sujet);
+            List<Reclamation> list = service.rechercherParSujet(sujetSearch);
             if(list.isEmpty()) {
                 messageLabel.setText("Aucune réclamation trouvée !");
                 return;
@@ -67,8 +70,25 @@ public class ModifierReclamationController {
         String desc = descriptionField.getText().trim();
         String statut = statutCombo.getValue();
 
-        if(type.isEmpty() || sujet.isEmpty() || desc.isEmpty() || statut == null) {
-            messageLabel.setText("Tous les champs sont obligatoires !");
+        // Contrôle de saisie renforcé
+        if(type.isEmpty()) {
+            messageLabel.setText("Le champ Type est obligatoire !");
+            typeField.requestFocus();
+            return;
+        }
+        if(sujet.isEmpty() || sujet.length() < 5) {
+            messageLabel.setText("Le champ Sujet est obligatoire et doit contenir au moins 5 caractères !");
+            sujetField.requestFocus();
+            return;
+        }
+        if(desc.isEmpty() || desc.length() < 10) {
+            messageLabel.setText("Le champ Description est obligatoire et doit contenir au moins 10 caractères !");
+            descriptionField.requestFocus();
+            return;
+        }
+        if(statut == null) {
+            messageLabel.setText("Veuillez sélectionner un statut !");
+            statutCombo.requestFocus();
             return;
         }
 
@@ -101,7 +121,7 @@ public class ModifierReclamationController {
             messageLabel.setStyle("-fx-text-fill: red;");
             messageLabel.setText("Réclamation supprimée avec succès !");
 
-            // vider les champs
+            // Vider les champs
             typeField.clear();
             sujetField.clear();
             descriptionField.clear();

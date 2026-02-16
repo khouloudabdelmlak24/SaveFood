@@ -16,46 +16,66 @@ public class AjouterReponseReclamationController {
     @FXML
     private TextField idReclamationField;
 
+    @FXML
+    private Label messageLabel;
+
+    @FXML
+    private Button btnAjouter;
+
     private ServiceReponseReclamation service = new ServiceReponseReclamation();
 
     @FXML
     private void ajouter() {
 
-        if (messageField.getText().isEmpty()
-                || idReclamationField.getText().isEmpty()) {
+        String message = messageField.getText().trim();
+        String idRecStr = idReclamationField.getText().trim();
 
-            showAlert("Erreur", "Tous les champs sont obligatoires.");
+        // Contrôle de saisie
+        if (message.isEmpty()) {
+            messageLabel.setText("Le champ Message est obligatoire !");
+            messageField.requestFocus();
+            return;
+        }
+
+        if (message.length() < 5) {
+            messageLabel.setText("Le Message doit contenir au moins 5 caractères !");
+            messageField.requestFocus();
+            return;
+        }
+
+        if (idRecStr.isEmpty()) {
+            messageLabel.setText("Le champ ID Réclamation est obligatoire !");
+            idReclamationField.requestFocus();
+            return;
+        }
+
+        int idRec;
+        try {
+            idRec = Integer.parseInt(idRecStr);
+        } catch (NumberFormatException e) {
+            messageLabel.setText("ID Réclamation doit être un nombre !");
+            idReclamationField.requestFocus();
             return;
         }
 
         try {
-            int idRec = Integer.parseInt(idReclamationField.getText());
-
             ReponseReclamation r =
                     new ReponseReclamation(
                             0,
-                            messageField.getText(),
+                            message,
                             new Date(),
                             idRec
                     );
 
             service.ajouter(r);
 
-            showAlert("Succès", "Réponse ajoutée avec succès.");
+            messageLabel.setText("Réponse ajoutée avec succès !");
             messageField.clear();
             idReclamationField.clear();
 
-        } catch (NumberFormatException e) {
-            showAlert("Erreur", "ID Réclamation doit être un nombre.");
         } catch (SQLException e) {
+            messageLabel.setText("Erreur lors de l'ajout : " + e.getMessage());
             e.printStackTrace();
         }
-    }
-
-    private void showAlert(String t, String m) {
-        Alert a = new Alert(Alert.AlertType.INFORMATION);
-        a.setTitle(t);
-        a.setContentText(m);
-        a.showAndWait();
     }
 }
