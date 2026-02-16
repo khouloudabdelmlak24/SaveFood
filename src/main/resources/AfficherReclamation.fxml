@@ -7,56 +7,30 @@
             fx:controller="tn.esprit.controllers.AfficherReclamationController"
             style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #36656B);">
 
-    <!-- ================= HEADER ================= -->
     <top>
         <VBox spacing="15" style="-fx-padding:25;">
 
-            <Label text="Gérer les Réclamations"
-                   style="-fx-font-size:24px;
-                          -fx-font-weight:bold;
-                          -fx-text-fill:#36656B;" />
+            <Label text="Afficher Réclamations"
+                   style="-fx-font-size:24px; -fx-font-weight:bold; -fx-text-fill:#36656B;" />
 
             <HBox spacing="15" alignment="CENTER_LEFT">
-
                 <TextField fx:id="searchField"
                            promptText="🔍 Rechercher par sujet..."
                            prefWidth="280"
-                           style="-fx-background-radius:20;
-                                  -fx-padding:8 15 8 15;
-                                  -fx-border-radius:20;
-                                  -fx-border-color:#3498db;" />
-
-                <Button text="Rechercher"
-                        onAction="#rechercher"
-                        style="-fx-background-color:#3498db;
-                               -fx-text-fill:white;
-                               -fx-background-radius:20;
-                               -fx-padding:8 20 8 20;" />
-
-                <Button text="📂 Trier par Type"
-                        onAction="#trierType"
-                        style="-fx-background-color:#2ecc71;
-                               -fx-text-fill:white;
-                               -fx-background-radius:20;
-                               -fx-padding:8 20 8 20;" />
-
-                <Button text="📌 Trier par Statut"
-                        onAction="#trierStatut"
-                        style="-fx-background-color:#9b59b6;
-                               -fx-text-fill:white;
-                               -fx-background-radius:20;
-                               -fx-padding:8 20 8 20;" />
-
+                           style="-fx-background-radius:20; -fx-padding:8 15 8 15; -fx-border-radius:20; -fx-border-color:#36656B;" />
+                <Button text="Rechercher" onAction="#rechercher"
+                        style="-fx-background-color:#36656B; -fx-text-fill:white; -fx-background-radius:20; -fx-padding:8 20 8 20;" />
+                <Button text="📂 Trier par Type" onAction="#trierType"
+                        style="-fx-background-color:#36656B; -fx-text-fill:white; -fx-background-radius:20; -fx-padding:8 20 8 20;" />
+                <Button text="📌 Trier par Statut" onAction="#trierStatut"
+                        style="-fx-background-color:#36656B; -fx-text-fill:white; -fx-background-radius:20; -fx-padding:8 20 8 20;" />
             </HBox>
         </VBox>
     </top>
 
-    <!-- ================= CONTENU ================= -->
     <center>
-        <ScrollPane fitToWidth="true" style="-fx-background-color:transparent;">
-            <VBox fx:id="cardContainer"
-                  spacing="20"
-                  style="-fx-padding:25;" />
+        <ScrollPane fitToWidth="true" style="-fx-background-color: #36656B;">
+            <VBox fx:id="cardContainer" spacing="20" style="-fx-padding:25;" />
         </ScrollPane>
     </center>
 

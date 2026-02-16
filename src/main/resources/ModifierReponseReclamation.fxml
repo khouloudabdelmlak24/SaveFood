@@ -8,42 +8,59 @@
             style="-fx-background-color: linear-gradient(to bottom right, #eef2f7, #36656B);">
 
     <center>
-        <VBox spacing="20" alignment="CENTER"
+        <VBox spacing="20"
+              alignment="CENTER"
               style="-fx-padding:40;">
 
-            <Label text="Modifier Réponse"
+            <!-- TITRE -->
+            <Label text="Modifier une Réponse"
                    style="-fx-font-size:22px;
                           -fx-font-weight:bold;
                           -fx-text-fill:#36656B;" />
 
+            <!-- ID REPONSE -->
             <TextField fx:id="idField"
                        promptText="ID Réponse"
                        prefWidth="350"
                        style="-fx-background-radius:20;
+                              -fx-padding:10 15 10 15;
                               -fx-border-radius:20;
-                              -fx-border-color:#3498db;" />
+                              -fx-border-color:#A5C89E;" />
 
+            <!-- MESSAGE -->
             <TextArea fx:id="messageField"
                       promptText="Nouveau message"
                       prefWidth="350"
                       prefHeight="120"
+                      wrapText="true"
                       style="-fx-background-radius:20;
+                             -fx-padding:10;
                              -fx-border-radius:20;
-                             -fx-border-color:#3498db;" />
+                             -fx-border-color:#A5C89E;" />
 
+            <!-- ID RECLAMATION -->
             <TextField fx:id="idReclamationField"
                        promptText="ID Réclamation"
                        prefWidth="350"
                        style="-fx-background-radius:20;
+                              -fx-padding:10 15 10 15;
                               -fx-border-radius:20;
-                              -fx-border-color:#3498db;" />
+                              -fx-border-color:#A5C89E;" />
 
-            <Button text="Modifier"
+            <!-- MESSAGE D'ERREUR / SUCCES -->
+            <Label fx:id="messageLabel"
+                   style="-fx-font-weight:bold;
+                          -fx-text-fill:#A5C89E;" />
+
+            <!-- BOUTON -->
+            <Button fx:id="btnModifier"
+                    text="Modifier"
                     onAction="#modifier"
                     style="-fx-background-color:#36656B;
                            -fx-text-fill:white;
                            -fx-background-radius:20;
-                           -fx-padding:10 25 10 25;" />
+                           -fx-padding:10 25 10 25;
+                           -fx-cursor:hand;" />
 
         </VBox>
     </center>

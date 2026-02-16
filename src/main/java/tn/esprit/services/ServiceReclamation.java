@@ -1,7 +1,6 @@
 package tn.esprit.services;
 
 import tn.esprit.entities.Reclamation;
-import tn.esprit.services.ServiceReclamation;
 import tn.esprit.utils.MyDataBase;
 
 import java.sql.*;
@@ -9,14 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static tn.esprit.utils.MyDataBase.*;
-
 public class ServiceReclamation {
 
     private Connection connection;
 
     public ServiceReclamation() {
-        connection = getInstance().getMyConnection();
+        connection = MyDataBase.getInstance().getMyConnection();
     }
 
     // Ajouter une réclamation
@@ -46,13 +43,28 @@ public class ServiceReclamation {
         System.out.println("Réclamation modifiée !");
     }
 
-    // Supprimer une réclamation
+    // Supprimer une réclamation par ID
     public void supprimer(int id) throws SQLException {
         String sql = "DELETE FROM reclamation WHERE id=?";
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setInt(1, id);
         ps.executeUpdate();
         System.out.println("Réclamation supprimée !");
+    }
+
+    // Supprimer par type et sujet
+    public void supprimerParTypeEtSujet(String type, String sujet) throws SQLException {
+        String sql = "DELETE FROM reclamation WHERE type = ? AND sujet = ?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, type);
+        ps.setString(2, sujet);
+
+        int rows = ps.executeUpdate();
+        if (rows > 0) {
+            System.out.println("Réclamation supprimée avec succès !");
+        } else {
+            System.out.println("Aucune réclamation trouvée avec ces critères.");
+        }
     }
 
     // Afficher toutes les réclamations

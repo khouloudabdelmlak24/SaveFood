@@ -1,7 +1,8 @@
 package tn.esprit.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
 import tn.esprit.services.ServiceReponseReclamation;
 
 import java.sql.SQLException;
@@ -9,34 +10,45 @@ import java.sql.SQLException;
 public class SupprimerReponseReclamationController {
 
     @FXML
-    private TextField idField;
+    private TextField idReclamationField;
+
+    @FXML
+    private TextField messageField;
 
     private ServiceReponseReclamation service = new ServiceReponseReclamation();
 
     @FXML
     private void supprimer() {
 
-        if (idField.getText().isEmpty()) {
-            showAlert("Erreur", "Veuillez entrer un ID.");
+        if (idReclamationField.getText().isEmpty() || messageField.getText().isEmpty()) {
+            showAlert("Erreur", "Veuillez remplir tous les champs.");
             return;
         }
 
         try {
-            int id = Integer.parseInt(idField.getText());
-            service.supprimer(id);
-            showAlert("Succès", "Réponse supprimée.");
+            int idReclamation = Integer.parseInt(idReclamationField.getText());
+            String message = messageField.getText();
+
+            // ✅ Appel correct pour supprimer
+            service.supprimerParIdReclamationEtMessage(idReclamation, message);
+
+            showAlert("Succès", "Réponse supprimée avec succès.");
+            idReclamationField.clear();
+            messageField.clear();
 
         } catch (NumberFormatException e) {
-            showAlert("Erreur", "ID invalide.");
+            showAlert("Erreur", "ID de réclamation invalide.");
         } catch (SQLException e) {
+            showAlert("Erreur", "Erreur lors de la suppression.");
             e.printStackTrace();
         }
     }
 
-    private void showAlert(String t, String m) {
-        Alert a = new Alert(Alert.AlertType.INFORMATION);
-        a.setTitle(t);
-        a.setContentText(m);
-        a.showAndWait();
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

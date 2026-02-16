@@ -11,24 +11,34 @@
         <VBox spacing="20" alignment="CENTER"
               style="-fx-padding:50;">
 
-            <Label text="Supprimer Réponse"
+            <Label text="Supprimer une Réponse"
                    style="-fx-font-size:22px;
                           -fx-font-weight:bold;
                           -fx-text-fill:#36656B;" />
 
-            <TextField fx:id="idField"
-                       promptText="ID Réponse"
+            <TextField fx:id="idReclamationField"
+                       promptText="ID de la réclamation"
                        prefWidth="300"
                        style="-fx-background-radius:20;
                               -fx-border-radius:20;
-                              -fx-border-color:#3498db;" />
+                              -fx-border-color:#3498db;
+                              -fx-padding:10 15 10 15;" />
+
+            <TextField fx:id="messageField"
+                       promptText="Message de la réponse"
+                       prefWidth="300"
+                       style="-fx-background-radius:20;
+                              -fx-border-radius:20;
+                              -fx-border-color:#3498db;
+                              -fx-padding:10 15 10 15;" />
 
             <Button text="Supprimer"
                     onAction="#supprimer"
                     style="-fx-background-color:#e74c3c;
                            -fx-text-fill:white;
                            -fx-background-radius:20;
-                           -fx-padding:10 25 10 25;" />
+                           -fx-padding:10 25 10 25;
+                           -fx-cursor:hand;" />
 
         </VBox>
     </center>

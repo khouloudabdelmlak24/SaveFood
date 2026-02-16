@@ -19,14 +19,16 @@
     <center>
         <VBox alignment="CENTER" spacing="20" style="-fx-padding:40;">
 
-            <TextField fx:id="typeField"
-                       prefWidth="350"
-                       promptText="Type"
-                       style="-fx-background-radius:20;
-                              -fx-padding:10 15 10 15;
-                              -fx-border-radius:20;
-                              -fx-border-color:#3498db;" />
+            <!-- ✅ LISTE DÉROULANTE TYPE -->
+            <ComboBox fx:id="typeCombo"
+                      prefWidth="250"
+                      promptText="Choisir le type"
+                      style="-fx-background-radius:20;
+                             -fx-padding:5 10 5 10;
+                             -fx-border-radius:20;
+                             -fx-border-color:#3498db;" />
 
+            <!-- SUJET -->
             <TextField fx:id="sujetField"
                        prefWidth="350"
                        promptText="Sujet"
@@ -35,6 +37,7 @@
                               -fx-border-radius:20;
                               -fx-border-color:#3498db;" />
 
+            <!-- DESCRIPTION -->
             <TextArea fx:id="descriptionField"
                       prefHeight="120"
                       prefWidth="350"
@@ -43,14 +46,25 @@
                              -fx-border-radius:20;
                              -fx-border-color:#3498db;" />
 
+            <!-- MESSAGE -->
             <Label fx:id="messageLabel"
                    style="-fx-font-weight:bold;
                           -fx-text-fill:#A5C89E;" />
 
+            <!-- BOUTON AJOUTER -->
             <Button fx:id="btnAjouter"
                     text="Ajouter"
                     onAction="#ajouterReclamation"
                     style="-fx-background-color:#36656B;
+                           -fx-text-fill:white;
+                           -fx-background-radius:20;
+                           -fx-padding:10 25 10 25;
+                           -fx-cursor:hand;" />
+
+            <!-- ✅ BOUTON AFFICHER -->
+            <Button text="Afficher ma réclamation"
+                    onAction="#ouvrirAfficherReclamation"
+                    style="-fx-background-color:#A5C89E;
                            -fx-text-fill:white;
                            -fx-background-radius:20;
                            -fx-padding:10 25 10 25;

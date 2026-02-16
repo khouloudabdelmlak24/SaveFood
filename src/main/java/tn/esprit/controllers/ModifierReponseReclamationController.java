@@ -19,46 +19,93 @@ public class ModifierReponseReclamationController {
     @FXML
     private TextField idReclamationField;
 
+    @FXML
+    private Label messageLabel;
+
+    @FXML
+    private Button btnModifier;
+
     private ServiceReponseReclamation service = new ServiceReponseReclamation();
 
     @FXML
     private void modifier() {
 
-        if (idField.getText().isEmpty()
-                || messageField.getText().isEmpty()
-                || idReclamationField.getText().isEmpty()) {
+        String idStr = idField.getText().trim();
+        String message = messageField.getText().trim();
+        String idRecStr = idReclamationField.getText().trim();
 
-            showAlert("Erreur", "Tous les champs sont obligatoires.");
+        // ==============================
+        // CONTROLE ID
+        // ==============================
+        if (idStr.isEmpty()) {
+            messageLabel.setText("Le champ ID est obligatoire !");
+            idField.requestFocus();
             return;
         }
 
+        int id;
         try {
-            int id = Integer.parseInt(idField.getText());
-            int idRec = Integer.parseInt(idReclamationField.getText());
+            id = Integer.parseInt(idStr);
+        } catch (NumberFormatException e) {
+            messageLabel.setText("ID doit être un nombre !");
+            idField.requestFocus();
+            return;
+        }
+
+        // ==============================
+        // CONTROLE MESSAGE
+        // ==============================
+        if (message.isEmpty()) {
+            messageLabel.setText("Le champ Message est obligatoire !");
+            messageField.requestFocus();
+            return;
+        }
+
+        if (message.length() < 5) {
+            messageLabel.setText("Le Message doit contenir au moins 5 caractères !");
+            messageField.requestFocus();
+            return;
+        }
+
+        // ==============================
+        // CONTROLE ID RECLAMATION
+        // ==============================
+        if (idRecStr.isEmpty()) {
+            messageLabel.setText("Le champ ID Réclamation est obligatoire !");
+            idReclamationField.requestFocus();
+            return;
+        }
+
+        int idRec;
+        try {
+            idRec = Integer.parseInt(idRecStr);
+        } catch (NumberFormatException e) {
+            messageLabel.setText("ID Réclamation doit être un nombre !");
+            idReclamationField.requestFocus();
+            return;
+        }
+
+        // ==============================
+        // MODIFICATION
+        // ==============================
+        try {
 
             ReponseReclamation r =
                     new ReponseReclamation(
                             id,
-                            messageField.getText(),
+                            message,
                             new Date(),
                             idRec
                     );
 
             service.modifier(r);
 
-            showAlert("Succès", "Réponse modifiée avec succès.");
+            messageLabel.setStyle("-fx-text-fill: green;");
+            messageLabel.setText("Réponse modifiée avec succès !");
 
-        } catch (NumberFormatException e) {
-            showAlert("Erreur", "Les ID doivent être numériques.");
         } catch (SQLException e) {
+            messageLabel.setText("Erreur : " + e.getMessage());
             e.printStackTrace();
         }
-    }
-
-    private void showAlert(String t, String m) {
-        Alert a = new Alert(Alert.AlertType.INFORMATION);
-        a.setTitle(t);
-        a.setContentText(m);
-        a.showAndWait();
     }
 }

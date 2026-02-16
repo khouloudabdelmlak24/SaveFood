@@ -10,27 +10,32 @@ import java.sql.SQLException;
 public class SupprimerReclamationController {
 
     @FXML
-    private TextField idField;
+    private TextField typeField;
+
+    @FXML
+    private TextField sujetField;
 
     private ServiceReclamation service = new ServiceReclamation();
 
     @FXML
     private void supprimer() {
 
-        if (idField.getText().isEmpty()) {
-            showAlert("Erreur", "Veuillez entrer un ID.");
+        // Vérification que les champs ne sont pas vides
+        if (typeField.getText().isEmpty() || sujetField.getText().isEmpty()) {
+            showAlert("Erreur", "Veuillez entrer le type et le sujet de la réclamation.");
             return;
         }
 
         try {
-            int id = Integer.parseInt(idField.getText());
-            service.supprimer(id);
+            String type = typeField.getText();
+            String sujet = sujetField.getText();
+
+            service.supprimerParTypeEtSujet(type, sujet);
 
             showAlert("Succès", "Réclamation supprimée avec succès.");
-            idField.clear();
+            typeField.clear();
+            sujetField.clear();
 
-        } catch (NumberFormatException e) {
-            showAlert("Erreur", "ID invalide.");
         } catch (SQLException e) {
             showAlert("Erreur", "Erreur lors de la suppression.");
             e.printStackTrace();

@@ -39,13 +39,28 @@ public class ServiceReponseReclamation {
         System.out.println("Réponse modifiée !");
     }
 
-    // Supprimer une réponse
+    // Supprimer une réponse par ID
     public void supprimer(int id) throws SQLException {
         String sql = "DELETE FROM reponse_reclamation WHERE id=?";
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setInt(1, id);
         ps.executeUpdate();
         System.out.println("Réponse supprimée !");
+    }
+
+    // Supprimer par idReclamation et message
+    public void supprimerParIdReclamationEtMessage(int idReclamation, String message) throws SQLException {
+        String sql = "DELETE FROM reponse_reclamation WHERE id_reclamation = ? AND message = ?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setInt(1, idReclamation);
+        ps.setString(2, message);
+
+        int rows = ps.executeUpdate();
+        if (rows > 0) {
+            System.out.println("Réponse supprimée avec succès !");
+        } else {
+            System.out.println("Aucune réponse trouvée avec ces critères.");
+        }
     }
 
     // Afficher toutes les réponses
